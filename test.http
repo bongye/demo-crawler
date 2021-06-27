@@ -1,0 +1,7 @@
+@local = http://localhost:8080
+
+### Start RabbitMQ
+GET {{local}}/rabbit-listener-start
+
+### Stop RabbitMQ
+GET {{local}}/rabbit-listener-stop
