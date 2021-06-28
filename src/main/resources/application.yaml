@@ -12,17 +12,10 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
+    virtual-host: crawler.vhost
     username: guest
     password: guest
     listener:
       simple:
         prefetch: 1
         auto-startup: false
----
-spring:
-  config:
-    activate:
-      on-profile: local
-  rabbitmq:
-    virtual-host: crawler.vhost
-    task-queue: queue1
