@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RabbitConfig {
   private final Receiver bizStsReceiver;
+  private final Receiver bizNameReceiver;
   private final Receiver dummyReceiver;
 
   @RabbitListener(id="receiver1", queues="queue1")
@@ -21,7 +22,7 @@ public class RabbitConfig {
 
   @RabbitListener(id="receiver2", queues="queue2") 
   public void process2(Message message){
-    _do(message, dummyReceiver);
+    _do(message, bizNameReceiver);
   }
 
   @RabbitListener(id="receiver3", queues="queue3")

@@ -1,7 +1,44 @@
-@local = http://localhost:8080
+@boot = http://localhost:8080
+@rabbit = http://localhost:15672
 
 ### Start RabbitMQ
-GET {{local}}/rabbit-listener-start
+GET {{boot}}/rabbit-listener-start
 
 ### Stop RabbitMQ
-GET {{local}}/rabbit-listener-stop
+GET {{boot}}/rabbit-listener-stop
+
+### Send Message to RabbitMQ (휴폐업조회)
+POST {{rabbit}}/api/exchanges/crawler.vhost/amq.default/publish
+Authorization: Basic guest guest
+Content-Type: application/json
+
+{
+  "properties": {},
+  "routing_key": "queue1",
+  "payload": "7348800358",
+  "payload_encoding":"string"
+}
+
+### Send Message to RabbitMQ (상호조회)
+POST {{rabbit}}/api/exchanges/crawler.vhost/amq.default/publish
+Authorization: Basic guest guest
+Content-Type: application/json
+
+{
+  "properties": {},
+  "routing_key": "queue2",
+  "payload": "7348800358",
+  "payload_encoding":"string"
+}
+
+### Send Message to RabbitMQ (더미)
+POST {{rabbit}}/api/exchanges/crawler.vhost/amq.default/publish
+Authorization: Basic guest guest
+Content-Type: application/json
+
+{
+  "properties": {},
+  "routing_key": "queue3",
+  "payload": "dummy message",
+  "payload_encoding":"string"
+}

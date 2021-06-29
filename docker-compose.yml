@@ -12,3 +12,11 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+  spring-boot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    links:
+      - rabbitmq

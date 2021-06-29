@@ -1,6 +1,7 @@
 package com.kcd.recruit.demo.crawler.config;
 
 import com.kcd.recruit.demo.crawler.component.Receiver;
+import com.kcd.recruit.demo.crawler.component.impl.BizNameReceiver;
 import com.kcd.recruit.demo.crawler.component.impl.BizStsReceiver;
 import com.kcd.recruit.demo.crawler.component.impl.DummyReceiver;
 
@@ -12,6 +13,11 @@ public class ReceiverConfig {
   @Bean
   public Receiver bizStsReceiver() {
     return new BizStsReceiver();
+  }
+
+  @Bean
+  public Receiver bizNameReceiver() {
+    return new BizNameReceiver();
   }
 
   @Bean
